@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "FirstViewController.h"
+#import "SecondViewController.h"
+#import "ThirdViewController.h"
+#import "FourthViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +20,48 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    
+    FirstViewController *vc1 = [[FirstViewController alloc] init];
+    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:vc1];
+    
+    SecondViewController *vc2 = [[SecondViewController alloc] init];
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:vc2];
+    
+    ThirdViewController *vc3 = [[ThirdViewController alloc] init];
+    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:vc3];
+    
+    FourthViewController *vc4 = [[FourthViewController alloc] init];
+    UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:vc4];
+    
+    UIImage *img1 = [UIImage imageNamed:@"message"];
+    UIImage *imgSelect1 = [UIImage imageNamed:@"message_selected"];
+    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"消息" image:img1 selectedImage:imgSelect1];
+    
+    UIImage *img2 = [UIImage imageNamed:@"contacts"];
+    UIImage *imgSelect2 = [UIImage imageNamed:@"contacts_selected"];
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"联系人" image:img2 selectedImage:imgSelect2];
+    
+    UIImage *img3 = [UIImage imageNamed:@"discover"];
+    UIImage *imgSelect3 = [UIImage imageNamed:@"discover_selected"];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"发现" image:img3 selectedImage:imgSelect3];
+    
+    UIImage *img4 = [UIImage imageNamed:@"me"];
+    UIImage *imgSelect4 = [UIImage imageNamed:@"me_selected"];
+    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"我" image:img4 selectedImage:imgSelect4];
+    nav1.tabBarItem = item1;
+    nav2.tabBarItem = item2;
+    nav3.tabBarItem = item3;
+    nav4.tabBarItem = item4;
+    
+    
+    [tab setViewControllers:@[nav1,nav2,nav3,nav4]];
+    
+    self.window.rootViewController = tab;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
